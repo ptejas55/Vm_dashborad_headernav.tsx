@@ -129,3 +129,32 @@ export default Navigation;
   height: 2px;
   background-color: black;
 }
+/* Media Queries */
+@media screen and (min-width: 768px) {
+  .navigation {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .global-navigation {
+    padding: 0;
+  }
+
+  .global-navigation .search-bar {
+    margin: 0 20px;
+  }
+
+  .sub-navigation {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .global-navigation .search-bar {
+    margin: 0 40px;
+  }
+
+  .global-navigation .action {
+    margin-left: 20px;
+  }
+}
