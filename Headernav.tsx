@@ -14,15 +14,30 @@ const Navigation: React.FC = () => {
       {/* Global Navigation */}
       <div className="global-navigation">
         {/* Logo */}
-        <div className="logo">Logo</div>
+        <div className="logo">Logo with Name</div>
         {/* Search bar */}
-        <div className="search-bar">Search Bar</div>
+        <div className="search-bar">
+          <input type="text" placeholder="Search" />
+          <span className="search-icon">🔍</span>
+        </div>
         {/* Actions */}
         <div className="actions">
-          <div className={`action ${activeMenuItem === 'bookmarks' ? 'active' : ''}`} onClick={() => handleMenuItemClick('bookmarks')}>Bookmarks</div>
-          <div className={`action ${activeMenuItem === 'notification' ? 'active' : ''}`} onClick={() => handleMenuItemClick('notification')}>Notification</div>
-          <div className={`action ${activeMenuItem === 'user' ? 'active' : ''}`} onClick={() => handleMenuItemClick('user')}>User</div>
-          <div className={`action ${activeMenuItem === 'apps' ? 'active' : ''}`} onClick={() => handleMenuItemClick('apps')}>Apps</div>
+          <div className={`action ${activeMenuItem === 'bookmarks' ? 'active' : ''}`} onClick={() => handleMenuItemClick('bookmarks')}>
+            <span>Bookmarks</span>
+            <span className="action-icon">🔖</span>
+          </div>
+          <div className={`action ${activeMenuItem === 'notification' ? 'active' : ''}`} onClick={() => handleMenuItemClick('notification')}>
+            <span>Notification</span>
+            <span className="action-icon">🔔</span>
+          </div>
+          <div className={`action ${activeMenuItem === 'user' ? 'active' : ''}`} onClick={() => handleMenuItemClick('user')}>
+            <span>User</span>
+            <span className="action-icon">👤</span>
+          </div>
+          <div className={`action ${activeMenuItem === 'apps' ? 'active' : ''}`} onClick={() => handleMenuItemClick('apps')}>
+            <span>Apps</span>
+            <span className="action-icon">📱</span>
+          </div>
         </div>
       </div>
       {/* Sub-Navigation */}
@@ -40,8 +55,13 @@ const Navigation: React.FC = () => {
 
 export default Navigation;
 /* Global Navigation Styles */
-.global-navigation {
+.navigation {
   width: 1568px;
+  display: flex;
+  flex-direction: column;
+}
+
+.global-navigation {
   height: 56px;
   display: flex;
   justify-content: space-between;
@@ -55,6 +75,19 @@ export default Navigation;
   margin: 0 10px;
 }
 
+.global-navigation .search-bar input {
+  width: 150px;
+  height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+.global-navigation .search-icon {
+  font-size: 20px;
+  margin-left: 5px;
+}
+
 .global-navigation .actions {
   display: flex;
   align-items: center;
@@ -63,6 +96,8 @@ export default Navigation;
 .global-navigation .action {
   margin: 0 10px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .global-navigation .action.active {
@@ -82,8 +117,15 @@ export default Navigation;
 .sub-navigation .menu-item {
   margin: 0 20px;
   cursor: pointer;
+  position: relative;
 }
 
-.sub-navigation .menu-item.active {
-  border-bottom: 2px solid black;
+.sub-navigation .menu-item.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 117px;
+  height: 2px;
+  background-color: black;
 }
